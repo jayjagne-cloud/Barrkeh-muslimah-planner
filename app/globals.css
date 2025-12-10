@@ -1,0 +1,464 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Barrkeh Muslimah Planner - Dark/Light Theme */
+:root {
+  /* Light theme - warm cream and gold */
+  --background: 48 100% 97%;
+  --foreground: 220 20% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 20% 12%;
+  --primary: 43 74% 49%;
+  --primary-foreground: 220 20% 8%;
+  --secondary: 40 30% 92%;
+  --secondary-foreground: 220 15% 30%;
+  --muted: 40 20% 94%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 43 60% 70%;
+  --accent-foreground: 220 20% 12%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 40 30% 85%;
+  --input: 40 20% 96%;
+  --ring: 43 74% 49%;
+  --radius: 1rem;
+
+  /* Chart colors */
+  --chart-1: 43 74% 49%;
+  --chart-2: 38 70% 35%;
+  --chart-3: 40 60% 70%;
+  --chart-4: 35 50% 55%;
+  --chart-5: 45 80% 60%;
+
+  /* Sidebar */
+  --sidebar: 0 0% 98%;
+  --sidebar-foreground: 220 20% 12%;
+  --sidebar-primary: 43 74% 49%;
+  --sidebar-primary-foreground: 220 20% 8%;
+  --sidebar-accent: 40 30% 94%;
+  --sidebar-accent-foreground: 220 15% 30%;
+  --sidebar-border: 40 30% 88%;
+  --sidebar-ring: 43 74% 49%;
+}
+
+.dark {
+  /* Dark theme - charcoal grey with gold accents */
+  --background: 220 15% 13%;
+  --foreground: 40 10% 96%;
+  --card: 220 15% 16%;
+  --card-foreground: 40 10% 96%;
+  --popover: 220 15% 16%;
+  --popover-foreground: 40 10% 96%;
+  --primary: 43 74% 52%;
+  --primary-foreground: 220 20% 8%;
+  --secondary: 220 12% 20%;
+  --secondary-foreground: 40 10% 90%;
+  --muted: 220 12% 18%;
+  --muted-foreground: 40 8% 65%;
+  --accent: 43 50% 30%;
+  --accent-foreground: 43 60% 85%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 43 30% 25%;
+  --input: 220 12% 18%;
+  --ring: 43 74% 52%;
+
+  /* Chart colors */
+  --chart-1: 43 74% 52%;
+  --chart-2: 38 70% 45%;
+  --chart-3: 40 60% 65%;
+  --chart-4: 35 50% 50%;
+  --chart-5: 45 80% 55%;
+
+  /* Sidebar */
+  --sidebar: 220 15% 10%;
+  --sidebar-foreground: 40 10% 96%;
+  --sidebar-primary: 43 74% 52%;
+  --sidebar-primary-foreground: 220 20% 8%;
+  --sidebar-accent: 220 12% 18%;
+  --sidebar-accent-foreground: 40 10% 90%;
+  --sidebar-border: 220 12% 22%;
+  --sidebar-ring: 43 74% 52%;
+}
+
+@theme inline {
+  --font-sans: "Georgia", "Times New Roman", serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-mono: ui-monospace, monospace;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply antialiased;
+    font-family: "Georgia", "Times New Roman", serif;
+  }
+}
+
+/* ===== PLANNER CONTAINER ===== */
+.planner-container {
+  background: linear-gradient(to bottom, #f5f0e6, #ebe5d9, #e0d9cc);
+}
+
+.dark .planner-container {
+  background: linear-gradient(to bottom, #444444, #303030, #222222);
+}
+
+/* ===== MAIN CARD ===== */
+.planner-main-card {
+  background: linear-gradient(to bottom right, #ffffff, #faf7f2, #f5f0e6);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.09), inset 0 0 28px rgba(255, 240, 200, 0.04);
+}
+
+.dark .planner-main-card {
+  background: linear-gradient(to bottom right, #242424, #333333, #202020);
+}
+
+/* ===== LOGO SECTION ===== */
+.logo-section-container {
+  background: radial-gradient(circle at top, #f5f0e6 0%, #e8e2d6 70%, #d9d3c7 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 0 24px rgba(255, 255, 255, 0.5);
+}
+
+.dark .logo-section-container {
+  background: radial-gradient(circle at top, #282828 0%, #181818 70%, #000 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 24px rgba(255, 255, 255, 0.04);
+}
+
+.logo-title {
+  color: #1a1a1a;
+}
+
+.dark .logo-title {
+  color: #f9fafb;
+}
+
+.logo-tagline {
+  color: #4a4a4a;
+}
+
+.dark .logo-tagline {
+  color: #e5e7eb;
+}
+
+.logo-greeting {
+  color: #2a2a2a;
+  font-weight: 600;
+}
+
+.dark .logo-greeting {
+  color: #e5e7eb;
+}
+
+.lang-select {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.dark .lang-select {
+  background: #111111;
+  color: #f5f5f5;
+}
+
+/* ===== NAVIGATION TABS ===== */
+.nav-tabs-container {
+  background: linear-gradient(to bottom right, #f0ebe0, #e8e2d6, #f0ebe0);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.dark .nav-tabs-container {
+  background: linear-gradient(to bottom right, #0b0b0b, #111111, #050505);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.nav-tab-inactive {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: rgba(180, 160, 120, 0.3);
+}
+
+.nav-tab-inactive:hover {
+  background: #f5f0e6;
+}
+
+.dark .nav-tab-inactive {
+  background: #141414;
+  color: #ededed;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .nav-tab-inactive:hover {
+  background: #1a1a1a;
+}
+
+.nav-tab-active {
+  background: linear-gradient(135deg, #f0d68a, #c39a39);
+  color: #111;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== PLANNER SECTION CARD ===== */
+.planner-section {
+  background: linear-gradient(to bottom, #ffffff, #faf7f2, #ffffff);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 8px 32px rgba(120, 100, 60, 0.12), inset 0 0 22px rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 1.5rem;
+  padding-bottom: 3.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.dark .planner-section {
+  background: linear-gradient(to bottom, #202020, #282828, #1a1a1a);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.95), inset 0 0 22px rgba(255, 255, 255, 0.03);
+}
+
+/* ===== PLANNER HEADINGS ===== */
+.planner-heading {
+  color: #8f6a2c;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.dark .planner-heading {
+  color: #fde7b0;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  border-bottom-color: rgba(212, 175, 55, 0.4);
+}
+
+/* ===== PLANNER SUBHEADING ===== */
+.planner-subheading {
+  color: #6b5a2c;
+}
+
+.dark .planner-subheading {
+  color: #ffeec5;
+}
+
+/* ===== PLANNER INPUT ===== */
+.planner-input {
+  background-color: #fefcf7;
+  color: #1a1a1a;
+  border: 1px solid rgba(180, 160, 120, 0.3);
+  border-radius: 14px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.02);
+}
+
+/* Updated dark mode input to use gray background instead of black */
+.dark .planner-input {
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.02);
+}
+
+.planner-input:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4), inset 0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+/* ===== PLANNER LABEL ===== */
+.planner-label {
+  color: #6b6b6b;
+  font-size: 0.75rem;
+}
+
+.dark .planner-label {
+  color: #9ca3af;
+}
+
+/* ===== PLANNER TEXT ===== */
+.planner-text {
+  color: #2a2a2a;
+}
+
+.dark .planner-text {
+  color: #d1d5db;
+}
+
+.planner-text-muted {
+  color: #5a5a5a;
+}
+
+.dark .planner-text-muted {
+  color: #9ca3af;
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle-btn {
+  background: #f5f0e6;
+  color: #1a1a1a;
+}
+
+.dark .theme-toggle-btn {
+  background: rgba(24, 24, 24, 0.95);
+  color: #f9fafb;
+}
+
+/* ===== CHECKBOX/CARD ITEM ===== */
+.planner-card-item {
+  background: #fefcf7;
+  border: 1px solid rgba(180, 160, 120, 0.2);
+}
+
+.dark .planner-card-item {
+  background: rgba(24, 24, 24, 0.9);
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* ===== SLIDER ===== */
+.planner-slider {
+  background: #e8e2d6;
+}
+
+.dark .planner-slider {
+  background: #333333;
+}
+
+/* Custom scrollbar for nav tabs */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #f9e7b5, #c9a961, #8c6a2b, #f5e2a4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold gradient background */
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37, #8f6a2c);
+}
+
+/* Gold conic gradient for logo */
+.gold-conic {
+  background: conic-gradient(from 220deg, #f9e7b5, #c9a961, #8c6a2b, #f5e2a4, #c9a961);
+}
+
+/* Subtle dot pattern overlay */
+.dot-pattern::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(100, 80, 40, 0.06) 1px, transparent 0);
+  background-size: 180px 180px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .dot-pattern::before {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+}
+
+/* Card glow effect */
+.card-glow {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.09), inset 0 0 28px rgba(255, 240, 200, 0.04);
+}
+
+/* Section animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease;
+}
+
+/* Input focus glow */
+.input-glow:focus {
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4), inset 0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+/* Button glow on hover */
+.btn-glow:hover {
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.8), inset 0 0 18px rgba(255, 255, 255, 0.14);
+}
+
+/* Lined textarea */
+.lined-textarea {
+  background-image: linear-gradient(to bottom, rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+  background-size: 100% 24px;
+  line-height: 24px;
+}
+
+/* Active card state */
+.card-active {
+  background: linear-gradient(135deg, #d4af37, #8f6a2c);
+  color: #111;
+  border-color: #d4af37;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.6), inset 0 0 18px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== FOOTER ===== */
+.footer-container {
+  background: #f5f0e6;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.02);
+  color: #3a3a3a;
+}
+
+.dark .footer-container {
+  background: #0d0d0d;
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.05);
+  color: #e5e7eb;
+}
