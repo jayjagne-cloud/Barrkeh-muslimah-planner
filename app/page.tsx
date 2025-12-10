@@ -85,8 +85,8 @@ export default function PlannerPage() {
     localStorage.setItem("barrkeh-language", lang)
   }
 
-  const handleThemeChange = (newTheme: "light" | "dark") => {
-    setTheme(newTheme)
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section as Section)
   }
 
   const handleEmotionClick = (emotion: string) => {
@@ -96,6 +96,11 @@ export default function PlannerPage() {
       emotion,
       ...emotionData,
     })
+  }
+
+  const handleThemeChange = (newTheme: string) => {
+    setTheme(newTheme)
+    localStorage.setItem("barrkeh-theme", newTheme)
   }
 
   const getEmotionData = (emotion: string) => {
@@ -200,7 +205,7 @@ export default function PlannerPage() {
         <div className="max-w-[1100px] mx-auto px-4 rounded-[22px] planner-main-card min-h-[90vh]">
           <LogoSection username={username} language={language} onLanguageChange={handleLanguageChange} />
 
-          <NavigationTabs activeSection={activeSection} onSectionChange={setActiveSection} language={language} />
+          <NavigationTabs activeSection={activeSection} onSectionChange={handleSectionChange} language={language} />
 
           {renderSection()}
 
